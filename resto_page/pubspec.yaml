@@ -1,7 +1,8 @@
 name: resto_page
-description: first package
+description: first package 13/08/21
 version: 0.0.1
-homepage:
+authors: Jerry EMMANUEL
+homepage: https://github.com/Eem-code/my_package/tree/main/resto_page
 
 environment:
   sdk: ">=2.12.0 <3.0.0"

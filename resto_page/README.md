@@ -1,6 +1,6 @@
 # resto_page
 
-first package
+first package jerry
 
 ## Getting Started
 
