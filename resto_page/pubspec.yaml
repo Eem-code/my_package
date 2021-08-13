@@ -1,7 +1,7 @@
 name: resto_page
 description: first package 13/08/21
 version: 0.0.1
-authors: Jerry EMMANUEL
+authors: Jerry EMMANUEL<emmanuel.entreprisefrance@gmail.com>
 homepage: https://github.com/Eem-code/my_package/tree/main/resto_page
 
 environment:
