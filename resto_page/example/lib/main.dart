@@ -29,24 +29,14 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'Notre app tourne sur ios: ${Adaptive.isIos()}',
-            ),
-          ],
-        ),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
-    );
+    return Adaptive.scaffold(
+        title: 'My package',
+        body: Center(
+          child: Adaptive.text(
+            string: 'body',
+          ),
+        ));
   }
 }
