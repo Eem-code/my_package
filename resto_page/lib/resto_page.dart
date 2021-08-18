@@ -6,7 +6,7 @@ import 'dart:io';
 
 class Adaptive {
   //check platform
-  static bool isIos() => (Platform.isIOS);
+  static bool isIos() => (!Platform.isIOS);
 
   //Material design Adaptive
   static Widget scaffold({required String title, required Widget body}) {
@@ -39,6 +39,25 @@ class Adaptive {
       style: style,
     );
   }
+
+  static androidErrorAlert({required BuildContext context}) {
+    return showDialog(
+        context: context,
+        builder: (_) {
+          return AlertDialog(
+            content: Column(
+              children: [
+                text(string: 'Une erreur est apparu'),
+                ElevatedButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    child: text(string: 'ok'))
+              ],
+            ),
+          );
+        });
+  }
 //s Ios material
 
   static CupertinoPageScaffold iosScaffold(String title, Widget body,
@@ -62,6 +81,27 @@ class Adaptive {
         textAlign: TextAlign.left,
       ),
     );
+  }
+
+  static iOSErrorAlert({required BuildContext context}) {
+    return CupertinoAlertDialog(
+      content: Column(
+        children: [text(string: 'Erreur')],
+      ),
+      actions: [
+        CupertinoButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            child: text(string: 'ok'))
+      ],
+    );
+  }
+
+  static alert({required BuildContext context}) {
+    return (isIos())
+        ? iOSErrorAlert(context: context)
+        : androidErrorAlert(context: context);
   }
 
 //Both material
