@@ -16,5 +16,5 @@ dependencies:
 Dans le fichier dart, importer: 
 
 ```dart
-import "package:resto_page.resto_page.dart";
+import "package:resto_page/resto_page.dart";
 ```
