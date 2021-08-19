@@ -6,25 +6,27 @@ import 'dart:io';
 
 class Adaptive {
   /// check platform
-  static bool isIos() => (!Platform.isIOS);
+  static bool _isIos() => (!Platform.isIOS);
 
   ///Material design Adaptive
   static Widget scaffold({required String title, required Widget body}) {
-    return (isIos()) ? iosScaffold(title, body) : androidScaffold(title, body);
+    return (_isIos())
+        ? _iosScaffold(title, body)
+        : _androidScaffold(title, body);
   }
 
   static text(
       {required String string, Color? color, double? size, TextAlign? align}) {
-    TextStyle style = textStyle(color: color, size: size);
-    return (isIos())
-        ? iOSText(string: string, style: style, align: align)
-        : androidText(string: string, style: style, align: align);
+    TextStyle style = _textStyle(color: color, size: size);
+    return (_isIos())
+        ? _iOSText(string: string, style: style, align: align)
+        : _androidText(string: string, style: style, align: align);
   }
 
   /// Android material
   /// A ne pas intégrer directement
   /// Le android Scaffold
-  static Scaffold androidScaffold(String title, Widget body) {
+  static Scaffold _androidScaffold(String title, Widget body) {
     return Scaffold(
       appBar: AppBar(
         title: Text(title),
@@ -34,7 +36,7 @@ class Adaptive {
   }
 
   ///Android text
-  static Text androidText(
+  static Text _androidText(
       {required String string, required TextStyle style, TextAlign? align}) {
     return Text(
       string,
@@ -43,7 +45,7 @@ class Adaptive {
     );
   }
 
-  static androidErrorAlert({required BuildContext context}) {
+  static _androidErrorAlert({required BuildContext context}) {
     return showDialog(
         context: context,
         builder: (_) {
@@ -65,7 +67,7 @@ class Adaptive {
   /// Ios material
   /// A ne pas intégrer directement
   /// Le ios Scaffold
-  static CupertinoPageScaffold iosScaffold(String title, Widget body,
+  static CupertinoPageScaffold _iosScaffold(String title, Widget body,
       {TextAlign? align}) {
     return CupertinoPageScaffold(
         navigationBar: CupertinoNavigationBar(
@@ -78,7 +80,7 @@ class Adaptive {
   }
 
   /// Le ios text
-  static DefaultTextStyle iOSText(
+  static DefaultTextStyle _iOSText(
       {required String string, required TextStyle style, TextAlign? align}) {
     return DefaultTextStyle(
       style: style,
@@ -90,7 +92,7 @@ class Adaptive {
   }
 
   /// Le ios alerte
-  static iOSErrorAlert({required BuildContext context}) {
+  static _iOSErrorAlert({required BuildContext context}) {
     return CupertinoAlertDialog(
       content: Column(
         children: [text(string: 'Erreur')],
@@ -107,14 +109,14 @@ class Adaptive {
 
   /// Adaptive alerte
   static alert({required BuildContext context}) {
-    return (isIos())
-        ? iOSErrorAlert(context: context)
-        : androidErrorAlert(context: context);
+    return (_isIos())
+        ? _iOSErrorAlert(context: context)
+        : _androidErrorAlert(context: context);
   }
 
   ///Both material
 
-  static TextStyle textStyle({Color? color, double? size, TextAlign? align}) {
+  static TextStyle _textStyle({Color? color, double? size, TextAlign? align}) {
     return TextStyle(color: color ?? Colors.black, fontSize: size ?? 20.0);
   }
 }
