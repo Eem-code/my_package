@@ -32,18 +32,19 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Adaptive.scaffold(
-        title: 'My package',
-        body: Column(
-          children: [
-            Adaptive.text(string: 'body', color: Colors.purple),
-            ElevatedButton(
-                style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all(Colors.purple)),
-                onPressed: () {
-                  Adaptive.alert(context: context);
-                },
-                child: Adaptive.text(string: 'press me'))
-          ],
-        ));
+      title: 'My package',
+      body: Column(
+        children: [
+          Adaptive.text(string: 'body', color: Colors.purple),
+          ElevatedButton(
+              style: ButtonStyle(
+                  backgroundColor: MaterialStateProperty.all(Colors.purple)),
+              onPressed: () {
+                Adaptive.alert(context: context);
+              },
+              child: Adaptive.text(string: 'press me'))
+        ],
+      ),
+    );
   }
 }
