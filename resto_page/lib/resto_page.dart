@@ -5,10 +5,10 @@ import 'package:flutter/cupertino.dart';
 import 'dart:io';
 
 class Adaptive {
-  //check platform
+  /// check platform
   static bool isIos() => (!Platform.isIOS);
 
-  //Material design Adaptive
+  ///Material design Adaptive
   static Widget scaffold({required String title, required Widget body}) {
     return (isIos()) ? iosScaffold(title, body) : androidScaffold(title, body);
   }
@@ -21,7 +21,9 @@ class Adaptive {
         : androidText(string: string, style: style, align: align);
   }
 
-// Android material
+  /// Android material
+  /// A ne pas intégrer directement
+  /// Le android Scaffold
   static Scaffold androidScaffold(String title, Widget body) {
     return Scaffold(
       appBar: AppBar(
@@ -31,6 +33,7 @@ class Adaptive {
     );
   }
 
+  ///Android text
   static Text androidText(
       {required String string, required TextStyle style, TextAlign? align}) {
     return Text(
@@ -58,8 +61,10 @@ class Adaptive {
           );
         });
   }
-//s Ios material
 
+  /// Ios material
+  /// A ne pas intégrer directement
+  /// Le ios Scaffold
   static CupertinoPageScaffold iosScaffold(String title, Widget body,
       {TextAlign? align}) {
     return CupertinoPageScaffold(
@@ -72,6 +77,7 @@ class Adaptive {
         child: body);
   }
 
+  /// Le ios text
   static DefaultTextStyle iOSText(
       {required String string, required TextStyle style, TextAlign? align}) {
     return DefaultTextStyle(
@@ -83,6 +89,7 @@ class Adaptive {
     );
   }
 
+  /// Le ios alerte
   static iOSErrorAlert({required BuildContext context}) {
     return CupertinoAlertDialog(
       content: Column(
@@ -98,13 +105,14 @@ class Adaptive {
     );
   }
 
+  /// Adaptive alerte
   static alert({required BuildContext context}) {
     return (isIos())
         ? iOSErrorAlert(context: context)
         : androidErrorAlert(context: context);
   }
 
-//Both material
+  ///Both material
 
   static TextStyle textStyle({Color? color, double? size, TextAlign? align}) {
     return TextStyle(color: color ?? Colors.black, fontSize: size ?? 20.0);
